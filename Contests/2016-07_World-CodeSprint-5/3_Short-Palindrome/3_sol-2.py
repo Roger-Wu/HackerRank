@@ -3,11 +3,11 @@ Problem:    https://www.hackerrank.com/contests/world-codesprint-5/challenges/sh
 Language:   Python 3
 Result:     15/40  Runtime Error
 Description:
-    This is my first solution. Using dynamic programming.
+    This is my first try. Using dynamic programming.
     It takes O(n^2) time and memory.
     Since it took too much memory, Runtime Error is raised in test case 16~40.
     https://www.hackerrank.com/contests/world-codesprint-5/challenges/short-palindrome/submissions/code/6381094
-    We can use much less memory by only keeping the last 3 rows of the matrix,
+    There's a way to make it take much less memory,
     but it still takes too much time.
     https://www.hackerrank.com/contests/world-codesprint-5/challenges/short-palindrome/submissions/code/6381653
 Explain:
@@ -18,8 +18,10 @@ Explain:
         = tuplesInFormat( (x, x, x, <6) ) + tuplesInFormat( (>0, x, x, x) ) - tuplesInFormat( (>0, x, x, <6) )
         = palinTuplesIn("abccba") + palinTuplesIn("bccbab") - palinTuplesIn("bccba")
     With this recursive relation, we can compute palinTuplesIn("abccbab") from the bottom up.
-    One more thing, if the first and the last char are the same, we still need to add
+    One more thing, if the first and the last char are the same, we need to add
         tuplesInFormat( (0, x, x, 6) )
+    which is
+        pairsIn("bccba")
 """
 
 MOD = 10**9 + 7
